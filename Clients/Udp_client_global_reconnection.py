@@ -39,9 +39,18 @@ for x in range(0, 3):
         data, server = sock.recvfrom(BUFSIZ) # Size of data received  = 512
 
         timetaken = time.time() - starttime
+        
+        if data == message:
+            print "%s :: Recieved data size and contents match"%test_status
+        else:
+          test_status = "Error"
+          print "%s :: Recieved data size and contents mismatch"%test_status
+          print "\nSent: %s \n" % message 
+          print "\nreceived: %s \n" % data
+          raise Exception          
     
-        print "\r\nReceived Data: %s \r\n" % data
-        print "\r\nResponse Time: %s sec" % timetaken
-    print "\r\n Closing the socket \r\n"
-    sock.close()
+        print "Response Time: %s sec\n\n\n" % timetaken
+      
+print "\r\n Closing the socket \r\n"
+sock.close()
         
