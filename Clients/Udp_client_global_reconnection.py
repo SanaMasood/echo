@@ -18,12 +18,14 @@ server_address = (remote_ip, port)
 
 message = '_____0000:012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789'
 
+
 for x in range(0, 3):
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     print "\r\n Connecting to the UDP socket \r\n"
     print server_address
     sock.connect(server_address)
-
+    test_status = 'Pass'
+    
     for y in range(0, 10):
         # Send data
         print "\nSend: %s " % message
